@@ -1,4 +1,4 @@
-// pixabay_image_model.dart
+// pixabay image_model.dart
 
 class PixabayResponse {
   final int total;

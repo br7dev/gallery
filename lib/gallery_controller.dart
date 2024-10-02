@@ -2,15 +2,12 @@
 import 'package:get/get.dart';
 import 'package:image_gallery/api_key.dart';
 import 'image_model.dart';
-import 'image_model.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class GalleryController extends GetxController {
-  // static const String API_KEY =
-  //     '46294099-a6e0870161244c8d0099124d8'; // Replace with your Pixabay API key
-  static const int PER_PAGE = 20;
+  static const int perPage = 20;
 
   var images = <PixabayImage>[].obs;
   var isLoading = false.obs;
@@ -52,12 +49,10 @@ class GalleryController extends GetxController {
 
   Future<void> fetchImages() async {
     if (isLoading.value || !hasMore.value) return;
-    print('aksdf;fasdf;j');
     isLoading.value = true;
 
     String url =
-        'https://pixabay.com/api/?key=${ApiKeys.pixabayApiKey}&image_type=photo&per_page=$PER_PAGE&page=$page';
-    print(url);
+        'https://pixabay.com/api/?key=${ApiKeys.pixabayApiKey}&image_type=photo&per_page=$perPage&page=$page';
     if (searchQuery.isNotEmpty) {
       url += '&q=${Uri.encodeQueryComponent(searchQuery)}';
     }
@@ -72,7 +67,7 @@ class GalleryController extends GetxController {
         if (pixabayResponse.hits.isNotEmpty) {
           images.addAll(pixabayResponse.hits);
           page++;
-          if (pixabayResponse.hits.length < PER_PAGE) {
+          if (pixabayResponse.hits.length < perPage) {
             hasMore.value = false;
           }
         } else {

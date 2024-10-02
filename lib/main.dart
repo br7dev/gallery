@@ -1,9 +1,7 @@
 // main.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'gallery_controller.dart';
 import 'gallery_page.dart';
-import 'image_model.dart';
 
 void main() {
   runApp(MyApp());
