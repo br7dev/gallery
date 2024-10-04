@@ -13,9 +13,16 @@ class ImageGridItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(
-          ExpandedPicture(image: image),
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ExpandedPicture(image: image),
+          ),
         );
+
+        /// Below is the Getx Navigator implementation
+        // Get.to(
+        //   ExpandedPicture(image: image),
+        // );
       },
       child: Column(
         children: [
